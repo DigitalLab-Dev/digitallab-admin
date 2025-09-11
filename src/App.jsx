@@ -9,8 +9,11 @@ import Login from './components/Login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Team from './pages/Team';
+import TurJa from './pages/TurJa';
+import FAQ from './pages/FAQ';
 
-export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+// export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+export const backendUrl =import.meta.env.VITE_BACKEND_URL|| "http://localhost:4000";
 export const currency = '$';
 const App = () => {
   const [token, setToken] = useState(
@@ -22,7 +25,7 @@ const App = () => {
   }, [token]);
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-black min-h-screen">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -39,11 +42,13 @@ const App = () => {
         <>
           <Navbar setToken={setToken} />
           <hr />
-          <div className="flex w-full">
+          <div className="flex w-full  border-orange-400 border-t">
             <Sidebar />
             <div className="w-[70%] max-auto ml-[max(5vw,25px)] my-8 text-gray-600 text-base">
               <Routes>
+                <Route path="/" element={<TurJa token={token} />} />
                 <Route path="/add" element={<Add token={token} />} />
+                <Route path="/faq" element={<FAQ token={token} />} />
                 <Route path="/list" element={<List token={token} />} />
                 <Route path="/community" element={<Orders token={token} />} />
                 <Route path="/team" element={<Team token={token} />} />

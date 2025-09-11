@@ -35,7 +35,7 @@ const List = () => {
   ) => {
     try {
       setLoading(true);
-      const response = await axios.get(backendUrl + '/api/blogs/get', {
+      const response = await axios.get(backendUrl + '/api/blogs', {
         params: {
           page,
           limit: 10,
@@ -64,7 +64,7 @@ const List = () => {
 
     try {
       const response = await axios.delete(
-        `${backendUrl}/api/blogs/remove/${id}`
+        `${backendUrl}/api/blogs/${id}`
       );
 
       if (response.data.success) {

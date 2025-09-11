@@ -7,7 +7,7 @@ const Navbar = ({setToken}) => {
       <button onClick={()=>{
         localStorage.clear();
         setToken('');
-      }} className="bg-gray-600 cursor-pointer text-white px-5 py-2 sm:px-7 sm:py-2 rounded-full text-xs sm:text-sm">
+      }} className="bg-orange-600 cursor-pointer text-white px-5 py-2 sm:px-7 sm:py-2 rounded-full text-xs sm:text-sm">
         Log Out
       </button>
     </div>
