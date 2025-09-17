@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 
 const TeamModal = ({ isOpen, onClose, onSubmit, member, loading }) => {
   const [name, setName] = useState('');
   const [designation, setDesignation] = useState('');
+  const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
 
   useEffect(() => {
     if (member) {
-      setName(member.name);
-      setDesignation(member.designation);
+      setName(member.name || '');
+      setDesignation(member.designation || '');
+      setDescription(member.description || '');
     } else {
       setName('');
       setDesignation('');
+      setDescription('');
       setImage(null);
     }
   }, [member]);
@@ -21,6 +24,7 @@ const TeamModal = ({ isOpen, onClose, onSubmit, member, loading }) => {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('designation', designation);
+    formData.append('description', description);
     if (image) formData.append('image', image);
     onSubmit(formData);
   };
@@ -50,12 +54,21 @@ const TeamModal = ({ isOpen, onClose, onSubmit, member, loading }) => {
             className="border p-2 rounded"
             required
           />
+          <textarea
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="border p-2 rounded h-24 resize-none"
+            required
+          />
+
           <input
             type="file"
             accept="image/*"
             onChange={(e) => setImage(e.target.files[0])}
             className="border p-2 rounded"
           />
+
           <div className="flex justify-end gap-2 mt-2">
             <button
               type="button"
@@ -68,8 +81,7 @@ const TeamModal = ({ isOpen, onClose, onSubmit, member, loading }) => {
               type="submit"
               className="px-4 py-2 bg-blue-500 text-white rounded"
             >
-              {loading && (member ? 'Updating ... ' : 'Adding ...')}
-              {!loading &&( member ? 'Update' : 'Add')}
+              {loading ? (member ? 'Updating...' : 'Adding...') : (member ? 'Update' : 'Add')}
             </button>
           </div>
         </form>
