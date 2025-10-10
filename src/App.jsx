@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Team from './pages/Team';
 import TurJa from './pages/TurJa';
 import FAQ from './pages/FAQ';
+import AdminReviewsApp from './pages/Review';
 
 // export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export const backendUrl =import.meta.env.VITE_BACKEND_URL|| "http://localhost:4000";
@@ -48,6 +49,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<TurJa token={token} />} />
                 <Route path="/add" element={<Add token={token} />} />
+                <Route path="/reviews" element={<AdminReviewsApp token={token} />} />
                 <Route path="/faq" element={<FAQ token={token} />} />
                 <Route path="/list" element={<List token={token} />} />
                 <Route path="/community" element={<Orders token={token} />} />
