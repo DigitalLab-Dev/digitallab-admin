@@ -12,6 +12,7 @@ import Team from './pages/Team';
 import TurJa from './pages/TurJa';
 import FAQ from './pages/FAQ';
 import AdminReviewsApp from './pages/Review';
+import InfluencerDashboard from './pages/Influencer';
 
 // export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export const backendUrl =import.meta.env.VITE_BACKEND_URL|| "http://localhost:4000";
@@ -54,6 +55,7 @@ const App = () => {
                 <Route path="/list" element={<List token={token} />} />
                 <Route path="/community" element={<Orders token={token} />} />
                 <Route path="/team" element={<Team token={token} />} />
+                <Route path="/influencer" element={<InfluencerDashboard token={token} />} />
               </Routes>
             </div>
           </div>

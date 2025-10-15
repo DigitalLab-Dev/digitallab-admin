@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Edit3, Trash2, Check, X, Eye, Upload, Search, Filter, Loader, AlertCircle, CheckCircle } from 'lucide-react';
 
 // API Service with proper error handling
-const API_BASE_URL = 'https://digitallab-server.vercel.app/api/review';
-
+// const API_BASE_URL = 'https://digitallab-server.vercel.app/api/review';
+const API_BASE_URL = `${import.meta.env.VITE_BACKEND_URL}/api/review`;
 const api = {
   getAllReviews: async () => {
     const response = await fetch(`${API_BASE_URL}/`);
